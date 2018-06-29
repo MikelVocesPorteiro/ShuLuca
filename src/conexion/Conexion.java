@@ -69,11 +69,12 @@ public class Conexion {
 	 */
 	////////// NUEVO//////////
 	public ArrayList<Zapato> listarZapatos() throws SQLException{
-		
+		System.out.println("conexion listar zapatos");
 		ArrayList<Zapato> lista = new ArrayList<Zapato>();
 		conectar();
+		System.out.println("conexion despues de conectar");
 		Statement  s = conexion.createStatement();
-		String query = "SELECT * FROM zapato";
+		String query = "SELECT * FROM modelo";
 		ResultSet rs = s.executeQuery(query);
 			while(rs.next()){
 				Zapato zapa = new Zapato();

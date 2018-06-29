@@ -16,7 +16,7 @@ import domain.Zapato;
  *
  */
 public class Stock implements IStock{
-	Conexion con;
+	//Conexion con;
 	private ArrayList<Zapato> stock;		
 	
 	public Stock(ArrayList< Zapato> stock){
@@ -34,9 +34,13 @@ public class Stock implements IStock{
     public ArrayList<Zapato> listarZapatos() {
     	ArrayList<Zapato> listaZapatos = new ArrayList<Zapato>();
     	try {
+    		Conexion con = new Conexion();
 			listaZapatos = con.listarZapatos();
+			System.out.println(listaZapatos);
+			System.out.println("listar zapatos Stock");
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
+			System.out.println("error al listar en Stock");
 			e.printStackTrace();
 		}
 		System.out.println("Pasa por el metodo listarZapatos() en la capa de datos ");
