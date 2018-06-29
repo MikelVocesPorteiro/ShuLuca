@@ -1,12 +1,15 @@
 /**
+
  * 
  */
 package datos;
+import java.util.ArrayList;
 
+import domain.Zapato;
 /**
  * @author admin
  *
  */
 public interface IStock {
-	 public void listarZapatos();
+	 public ArrayList<Zapato> listarZapatos();
 }

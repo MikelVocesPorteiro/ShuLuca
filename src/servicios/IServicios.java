@@ -3,12 +3,19 @@
  */
 package servicios;
 
+import java.util.ArrayList;
+
+import domain.Zapato;
+
 /**
  * @author admin
  *
  */
 public interface IServicios {
-	public void listarZapatos();
+	/**
+	 * 
+	 */
+	public ArrayList<Zapato> listarZapatos();
 
 
 

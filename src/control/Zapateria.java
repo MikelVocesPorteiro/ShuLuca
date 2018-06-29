@@ -1,6 +1,7 @@
 package control;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -9,7 +10,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import domain.Zapato;
 import servicios.IServicios;
+import servicios.Servicios;
 
 /**
  * Servlet implementation class Zapateria
@@ -17,7 +20,7 @@ import servicios.IServicios;
 @WebServlet("/Zapateria")
 public class Zapateria extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private IServicios servicios;
+	private IServicios servicios = new Servicios();
 
     /**
      * Default constructor. 
@@ -34,14 +37,16 @@ public class Zapateria extends HttpServlet {
         String origen = request.getParameter("page");
         if(origen.equals("listado")) {
             // LISTADO
+        	System.out.println("misout");
         	goListado(request, response);
             
         }
 	}
-	
+//////////NUEVO//////////
 	protected void goListado(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		request.setAttribute("listaZapato", servicios.listarZapatos());
+		ArrayList<Zapato> listaZapatos = servicios.listarZapatos();
+		request.setAttribute("listaZapato", listaZapatos);
+		System.out.println("hi");
         RequestDispatcher view = request.getRequestDispatcher("/listado.jsp");
         view.forward(request, response);
 	}
