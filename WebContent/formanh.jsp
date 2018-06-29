@@ -22,16 +22,23 @@
 </head>
 
 <body>
-	<form style="text-align: center;" action="">
+	<form style="text-align: center;" action="Zapateria">
 		<h1>Insertar una zapatilla</h1>
 		<label>nombre</label> <input type="text" placeholder="nombre" /> <br />
 		<label>marca</label><input type="text" placeholder="marca" /> <br />
 		<label>color</label> <input type="text" placeholder="color" /> <br />
 		<label>talla</label> <input type="text" placeholder="talla" /><br />
 		<label>precio</label> <input type="text" placeholder="precio" " /> <br />
-		<label>URL</label> <input type="text" placeholder="URL" /><br /> <label>Nombre
-			Categoria</label><input type="text" placeholder="URL"><br /> <input
-			type="submit" value="enviar">
+		<label>URL</label> <input type="text" placeholder="URL" /><br /> 
+		<label>Nombre Categoria</label>
+		<select>
+			<c:forEach var="categoria" items="${categorias}">
+				<option value="${categoria.id}">${categoria.nombre}</option>
+			</c:forEach>
+		</select>
+		
+		<br/>
+		<input type="submit" value="enviar" >
 
 	</form>
 </body>

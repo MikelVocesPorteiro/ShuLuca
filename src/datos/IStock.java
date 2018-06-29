@@ -5,6 +5,7 @@
 package datos;
 import java.util.ArrayList;
 
+import domain.Categoria;
 import domain.Zapato;
 /**
  * @author admin
@@ -12,4 +13,5 @@ import domain.Zapato;
  */
 public interface IStock {
 	 public ArrayList<Zapato> listarZapatos();
+	 public ArrayList<Categoria> listarCategorias();
 }

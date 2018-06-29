@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import domain.Categoria;
 import domain.Zapato;
 import servicios.IServicios;
 import servicios.Servicios;
@@ -49,6 +50,16 @@ public class Zapateria extends HttpServlet {
 			goListCategoria(request, response);
 
 		}
+		
+		if (origen.equals("insertar")) {
+			// LISTADO
+			System.out.println(request);
+			/*
+			System.out.println("anadi");
+			goListCategoria(request, response);
+			*/
+
+		}
 	}
 
 	////////// NUEVO//////////
@@ -66,11 +77,11 @@ public class Zapateria extends HttpServlet {
 
 	protected void goListCategoria(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		ArrayList<Zapato> listaZapatos = servicios.listarZapatos();
+		ArrayList<Categoria> listaCategorias = servicios.listarCategorias();
 		System.out.println(request);
 		System.out.println("-");
 		System.out.println(response);
-		request.setAttribute("zapatos", listaZapatos);
+		request.setAttribute("categorias", listaCategorias);
 		System.out.println("hi");
 		RequestDispatcher view = request.getRequestDispatcher("/formanh.jsp");
 		view.forward(request, response);

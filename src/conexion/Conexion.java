@@ -15,6 +15,7 @@ import funciones.LeerDatos;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import domain.Categoria;
 import domain.Zapato;
 //////////NUEVO//////////
 /**
@@ -101,6 +102,32 @@ public class Conexion {
 	
 	
 	}
+	
+	public ArrayList<Categoria> listarCategorias() throws SQLException{
+		System.out.println("conexion listar categorias");
+		ArrayList<Categoria> lista = new ArrayList<Categoria>();
+		conectar();
+		System.out.println("conexion despues de conectar");
+		Statement  s = conexion.createStatement();
+		String query = "SELECT idcategoria, nombre FROM categoria";
+		ResultSet rs = s.executeQuery(query);
+			while(rs.next()){
+				Categoria categor = new Categoria();
+				String nombre = rs.getString("nombre");
+				int id = rs.getInt("idcategoria");
+				categor.setNombre(nombre);
+				categor.setId(id);
+				lista.add(categor);
+				logger.debug("Lista de zapatos: " + lista);
+
+			}
+		
+		return lista;
+	
+	
+	}
+	
+	
 }
 
 

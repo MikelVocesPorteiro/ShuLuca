@@ -5,6 +5,7 @@ package servicios;
 
 import java.util.ArrayList;
 
+import domain.Categoria;
 import domain.Zapato;
 
 /**
@@ -16,6 +17,8 @@ public interface IServicios {
 	 * 
 	 */
 	public ArrayList<Zapato> listarZapatos();
+	
+	public ArrayList<Categoria> listarCategorias();
 
 
 

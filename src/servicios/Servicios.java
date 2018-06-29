@@ -3,6 +3,7 @@ import java.util.ArrayList;
 
 import datos.IStock;
 import datos.Stock;
+import domain.Categoria;
 import domain.Zapato;
 
 /**
@@ -18,6 +19,16 @@ public class Servicios implements IServicios{
 		listaZapatos = stock.listarZapatos();
 		System.out.println("Pasa por el metodo listarZapatos() en la capa de servicios ");
 		return listaZapatos;
+		
+	}
+	
+	@Override
+	public ArrayList<Categoria> listarCategorias() {
+		ArrayList<Categoria> listaCategorias = new ArrayList<Categoria>();
+		listaCategorias = stock.listarCategorias();
+		System.out.println("Pasa por el metodo listarCategorias() en la capa de servicios ");
+		
+		return listaCategorias;
 		
 	}
 	
