@@ -45,7 +45,7 @@ public class Zapateria extends HttpServlet {
 //////////NUEVO//////////
 	protected void goListado(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		ArrayList<Zapato> listaZapatos = servicios.listarZapatos();
-		request.setAttribute("listaZapato", listaZapatos);
+		request.setAttribute("zapatos", listaZapatos);
 		System.out.println("hi");
         RequestDispatcher view = request.getRequestDispatcher("/listado.jsp");
         view.forward(request, response);
