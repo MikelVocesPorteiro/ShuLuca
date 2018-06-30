@@ -37,59 +37,59 @@ public class Zapateria extends HttpServlet {
 
 	protected void processRequest(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		
 		String origen = request.getParameter("page");
+		System.out.println( " control.zapateria /Zapateria principio processRequest con origen = " + origen );
 		if (origen.equals("listado")) {
-			// LISTADO
-			System.out.println("misout");
+			System.out.println("  control.zapateria /Zapateria  processRequest principio if listado ");
 			goListado(request, response);
+			System.out.println("  control.zapateria /Zapateria  processRequest fin if listado ");
 
 		}
-		if (origen.equals("añadir")) {
-			// LISTADO
-			System.out.println("anadi");
+		if (origen.equals("insertar")) {
+			System.out.println("  control.zapateria /Zapateria  processRequest principio if insertar ");
 			goListCategoria(request, response);
+			System.out.println("  control.zapateria /Zapateria  processRequest fin if insertar ");
 
 		}
 		
-		if (origen.equals("insertar")) {
-			// LISTADO
-			System.out.println(request);
-			/*
-			System.out.println("anadi");
-			goListCategoria(request, response);
-			*/
+		if (origen.equals("es una cascara")) {
+			System.out.println("  control.zapateria /Zapateria  processRequest principio if es una cascara ");
+			
+			
+			
+			System.out.println("  control.zapateria /Zapateria  processRequest fin if es una cascara ");
 
 		}
+		System.out.println( "  control.zapateria /Zapateria fin processRequest" );
 	}
 
 	////////// NUEVO//////////
 	protected void goListado(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		System.out.println("  control.zapateria /Zapateria principio golistado ");
 		ArrayList<Zapato> listaZapatos = servicios.listarZapatos();
-		System.out.println(request);
-		System.out.println("-");
-		System.out.println(response);
 		request.setAttribute("zapatos", listaZapatos);
-		System.out.println("hi");
 		RequestDispatcher view = request.getRequestDispatcher("/listado.jsp");
 		view.forward(request, response);
+		System.out.println("  control.zapateria /Zapateria fin golistado ");
 	}
 
 	protected void goListCategoria(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		System.out.println("  control.zapateria /Zapateria principio goListCategoria ");
 		ArrayList<Categoria> listaCategorias = servicios.listarCategorias();
-		System.out.println(request);
-		System.out.println("-");
-		System.out.println(response);
 		request.setAttribute("categorias", listaCategorias);
-		System.out.println("hi");
 		RequestDispatcher view = request.getRequestDispatcher("/formanh.jsp");
 		view.forward(request, response);
+		System.out.println("  control.zapateria /Zapateria fin goListCategoria ");
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		System.out.println("  control.zapateria /Zapateria principio doget ");
 		processRequest(request, response);
+		System.out.println("  control.zapateria /Zapateria fin doget ");
 	}
 
 	/**
@@ -98,8 +98,9 @@ public class Zapateria extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		System.out.println("  control.zapateria /Zapateria principio doPost ");
 		doGet(request, response);
+		System.out.println("  control.zapateria /Zapateria fin dopost ");
 	}
 
 }

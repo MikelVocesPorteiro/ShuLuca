@@ -33,61 +33,33 @@ public class Stock implements IStock{
    */
 //////////NUEVO//////////
     public ArrayList<Zapato> listarZapatos() {
+		System.out.println("  datos.Stock implements IStock principio listarZapatos ");
     	ArrayList<Zapato> listaZapatos = new ArrayList<Zapato>();
     	try {
     		Conexion con = new Conexion();
 			listaZapatos = con.listarZapatos();
-			System.out.println(listaZapatos);
-			System.out.println("listar zapatos Stock");
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			System.out.println("error al listar en Stock");
 			e.printStackTrace();
 		}
-		System.out.println("Pasa por el metodo listarZapatos() en la capa de datos ");
+		System.out.println("  datos.Stock implements IStock fin listarZapatos ");
 		return listaZapatos;
     }
     
     public ArrayList<Categoria> listarCategorias() {
+		System.out.println("  datos.Stock implements IStock principio listarCategorias ");
     	ArrayList<Categoria> listaCategorias = new ArrayList<Categoria>();
     	try {
     		Conexion con = new Conexion();
     		listaCategorias = con.listarCategorias();
-			System.out.println(listaCategorias);
-			System.out.println("listar categorias Stock");
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			System.out.println("error al listar en Stock");
 			e.printStackTrace();
 		}
-		System.out.println("Pasa por el metodo listarCategorias() en la capa de datos ");
+		System.out.println("  datos.Stock implements IStock fin listarCategorias ");
 		return listaCategorias;
     }
-    
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 }

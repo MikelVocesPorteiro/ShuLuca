@@ -15,18 +15,20 @@ public class Servicios implements IServicios{
 
 	@Override
 	public ArrayList<Zapato> listarZapatos() {
+		System.out.println("  servicios.Servicios implements IServicios principio listarZapatos ");
 		ArrayList<Zapato> listaZapatos = new ArrayList<Zapato>();
 		listaZapatos = stock.listarZapatos();
-		System.out.println("Pasa por el metodo listarZapatos() en la capa de servicios ");
+		System.out.println("  servicios.Servicios implements IServicios fin listarZapatos ");
 		return listaZapatos;
 		
 	}
 	
 	@Override
 	public ArrayList<Categoria> listarCategorias() {
+		System.out.println("  servicios.Servicios implements IServicios principio listarCategorias ");
 		ArrayList<Categoria> listaCategorias = new ArrayList<Categoria>();
 		listaCategorias = stock.listarCategorias();
-		System.out.println("Pasa por el metodo listarCategorias() en la capa de servicios ");
+		System.out.println("  servicios.Servicios implements IServicios fin listarCategorias ");
 		
 		return listaCategorias;
 		

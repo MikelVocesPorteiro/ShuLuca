@@ -42,7 +42,7 @@ public class Conexion {
 	}
 
 	public void conectar() {
-
+		System.out.println("principio conexion.conexion conectar");
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 
@@ -51,15 +51,17 @@ public class Conexion {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		System.out.println("Conectado");
+		System.out.println("fin Conexion.conexion conectar");
 	}
 //////////NUEVO//////////
 	public void desconectar() {
+		System.out.println("principio conexion.conexion desconectar");
 		try {
 			conexion.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		System.out.println("fin conexion.conexion desconectar");
 	}
 
 	/**
@@ -70,10 +72,9 @@ public class Conexion {
 	 */
 	////////// NUEVO//////////
 	public ArrayList<Zapato> listarZapatos() throws SQLException{
-		System.out.println("conexion listar zapatos");
+		System.out.println("principio conexion.conexion listarZapatos");
 		ArrayList<Zapato> lista = new ArrayList<Zapato>();
 		conectar();
-		System.out.println("conexion despues de conectar");
 		Statement  s = conexion.createStatement();
 		String query = "SELECT * FROM modelo";
 		ResultSet rs = s.executeQuery(query);
@@ -94,39 +95,36 @@ public class Conexion {
 				zapa.setUrl(url);
 				
 				lista.add(zapa);
-				logger.debug("Lista de zapatos: " + lista);
+				//logger.debug("Lista de zapatos: " + lista);----------------------------------------------
 
 			}
+			System.out.println("fin conexion.conexion listarZapatos");
 		
 		return lista;
-	
 	
 	}
 	
 	public ArrayList<Categoria> listarCategorias() throws SQLException{
-		System.out.println("conexion listar categorias");
+		System.out.println("principio conexion.conexion listarCategorias");
 		ArrayList<Categoria> lista = new ArrayList<Categoria>();
 		conectar();
-		System.out.println("conexion despues de conectar");
 		Statement  s = conexion.createStatement();
 		String query = "SELECT idcategoria, nombre FROM categoria";
 		ResultSet rs = s.executeQuery(query);
-			while(rs.next()){
-				Categoria categor = new Categoria();
-				String nombre = rs.getString("nombre");
-				int id = rs.getInt("idcategoria");
-				categor.setNombre(nombre);
-				categor.setId(id);
-				lista.add(categor);
-				logger.debug("Lista de zapatos: " + lista);
+		while(rs.next()){
+			Categoria categor = new Categoria();
+			String nombre = rs.getString("nombre");
+			int id = rs.getInt("idcategoria");
+			categor.setNombre(nombre);
+			categor.setId(id);
+			lista.add(categor);
+			//logger.debug("Lista de zapatos: " + lista);----------------------------------
 
-			}
+		}
+		System.out.println("fin conexion.conexion listarCategorias");
 		
-		return lista;
-	
-	
-	}
-	
+		return lista;	
+	} 	
 	
 }
 
