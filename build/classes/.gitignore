@@ -1,5 +1,7 @@
-/control/
-/servicios/
 /conexion/
+/control/
 /datos/
 /domain/
+/funciones/
+/log4j2.xml
+/servicios/
