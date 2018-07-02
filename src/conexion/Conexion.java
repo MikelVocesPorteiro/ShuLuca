@@ -104,7 +104,7 @@ public class Conexion {
 	
 	}
 	
-	public ArrayList<Categoria> listarCategorias() throws SQLException{
+	public ArrayList<Categoria> listarCategorias() throws SQLException {
 		System.out.println("principio conexion.conexion listarCategorias");
 		ArrayList<Categoria> lista = new ArrayList<Categoria>();
 		conectar();
@@ -124,7 +124,30 @@ public class Conexion {
 		System.out.println("fin conexion.conexion listarCategorias");
 		
 		return lista;	
-	} 	
+	} 
+	
+	public ArrayList<String> listarNombres() throws SQLException{
+		System.out.println("principio conexion.conexion listarNombres");
+		ArrayList<String> lista = new ArrayList<String>();
+		conectar();
+		Statement  s = conexion.createStatement();
+		String query = "SELECT nombre FROM zapato.modelo;";
+		ResultSet rs = s.executeQuery(query);
+		while(rs.next()){
+			
+			String nombre = rs.getString("nombre");
+
+
+			lista.add(nombre);
+
+
+
+		}
+		System.out.println("fin conexion.conexion listarNombres");
+		
+		return lista;	
+	} 
+	
 	
 }
 
