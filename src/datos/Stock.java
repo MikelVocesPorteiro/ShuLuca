@@ -44,6 +44,7 @@ public class Stock implements IStock{
 			e.printStackTrace();
 		}
 		System.out.println("  datos.Stock implements IStock fin listarZapatos ");
+		System.out.println("hi");
 		return listaZapatos;
     }
     
@@ -61,5 +62,32 @@ public class Stock implements IStock{
 		System.out.println("  datos.Stock implements IStock fin listarCategorias ");
 		return listaCategorias;
     }
+    
+	public void anadirZapato(String nombre, String marca, String color, String talla, int categoria,
+			double precio, String url){
+		System.out.println("  datos.Stock implements IStock principio anadirZapato ");
+		try {
+    		Conexion con = new Conexion();
+    		con.anadirZapato(nombre, marca, color, talla, categoria, precio, url);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			System.out.println("error al añadir en Stock");
+			e.printStackTrace();
+		}
+		System.out.println("  datos.Stock implements IStock fin anadirZapato ");
+	}
 	
+	public ArrayList<String> listarNombres(){
+		System.out.println("  datos.Stock implements IStock principio listarNombres ");
+    	ArrayList<String> listaNombres = new ArrayList<String>();
+    	Conexion con = new Conexion();
+		try {
+			listaNombres = con.listarNombres();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		System.out.println("  datos.Stock implements IStock fin listarNombres ");
+		return listaNombres;
+	}
 }

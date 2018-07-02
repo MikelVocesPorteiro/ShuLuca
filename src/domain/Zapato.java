@@ -27,7 +27,7 @@ public class Zapato {
 	/**
 	 * Categortia del zapato
 	 */
-	private String categoria;
+	private int categoria;
 	/**
 	 * Precio del zapato
 	 */
@@ -64,7 +64,7 @@ public class Zapato {
 	 * 			Url del zapato
 	 */
 	
-    public Zapato(String nombre, String marca, String color, String talla, String categoria,
+    public Zapato(String nombre, String marca, String color, String talla, int categoria,
 			double precio, String url) {
 		super();
 		this.nombre = nombre;
@@ -146,7 +146,7 @@ public class Zapato {
 	 * @return categoria
 	 */
 
-	public String getCategoria() {
+	public int getCategoria() {
 		return categoria;
 	}
 	
@@ -155,7 +155,7 @@ public class Zapato {
 	 * @param categoria
 	 */
 
-	public void setCategoria(String categoria) {
+	public void setCategoria(int categoria) {
 		this.categoria = categoria;
 	}
 	
