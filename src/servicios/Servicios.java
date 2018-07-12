@@ -15,6 +15,7 @@ import domain.Zapato;
  *
  */
 public class Servicios implements IServicios {
+	
 	private IStock stock = new Stock();
 	private static final Logger log = LogManager.getLogger("Stock");
 
