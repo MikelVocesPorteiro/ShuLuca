@@ -26,12 +26,14 @@ import domain.Zapato;
  *
  */
 public class Conexion {
+	
 	public static Logger logger;
+	private static final Logger log = LogManager.getLogger("Conexion");
 	static {
 		try {
 			logger = LogManager.getLogger(LeerDatos.class);
 		} catch (Throwable e) {
-			System.out.println("No funciona");
+			log.info("No funciona");
 		}
 	}
 	private Connection conexion;
@@ -45,26 +47,26 @@ public class Conexion {
 	}
 
 	public void conectar() {
-		System.out.println("principio conexion.conexion conectar");
+		log.info("principio conexion.conexion conectar");
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 
 			conexion = DriverManager.getConnection("jdbc:mysql://10.90.36.39/zapato", "grupo3", "1234");
-			System.out.println("Conectado");
+			log.info("Conectado");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		System.out.println("fin Conexion.conexion conectar");
+		log.info("fin Conexion.conexion conectar");
 	}
 
 	public void desconectar() {
-		System.out.println("principio conexion.conexion desconectar");
+		log.info("principio conexion.conexion desconectar");
 		try {
 			conexion.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		System.out.println("fin conexion.conexion desconectar");
+		log.info("fin conexion.conexion desconectar");
 	}
 
 	/**
@@ -75,7 +77,7 @@ public class Conexion {
 	 * @throws SQLException
 	 */
 	public ArrayList<Zapato> listarZapatos() throws SQLException {
-		System.out.println("principio conexion.conexion listarZapatos");
+		log.info("principio conexion.conexion listarZapatos");
 		ArrayList<Zapato> lista = new ArrayList<Zapato>();
 		conectar();
 		Statement s = conexion.createStatement();
@@ -102,14 +104,14 @@ public class Conexion {
 			// lista);----------------------------------------------
 
 		}
-		System.out.println("fin conexion.conexion listarZapatos");
+		log.info("fin conexion.conexion listarZapatos");
 		desconectar();
 		return lista;
 
 	}
 
 	public ArrayList<Categoria> listarCategorias() throws SQLException {
-		System.out.println("principio conexion.conexion listarCategorias");
+		log.info("principio conexion.conexion listarCategorias");
 		ArrayList<Categoria> lista = new ArrayList<Categoria>();
 		conectar();
 		Statement s = conexion.createStatement();
@@ -126,20 +128,20 @@ public class Conexion {
 			// lista);----------------------------------
 
 		}
-		System.out.println("fin conexion.conexion listarCategorias");
+		log.info("fin conexion.conexion listarCategorias");
 		desconectar();
 		return lista;
 	}
 
 	public void anadirZapato(String nombre, String marca, String color, String talla, int categoria, double precio,
 			String url) throws SQLException {
-		System.out.println("principio conexion.conexion anadirZapato");
-		System.out.println("la url : " + url );
+		log.info("principio conexion.conexion anadirZapato");
+		log.info("la url : " + url );
 		ArrayList<Categoria> lista = new ArrayList<Categoria>();
 		conectar();
 		Statement s = conexion.createStatement();
 		categoria = Integer.valueOf(categoria);
-		System.out.println("fewf"+categoria);
+		log.info("fewf"+categoria);
 		String query = "INSERT INTO modelo (`nombre`, `marca`, `color`, `talla`, `precio`, `url`, `idcategoria`) "
 				+ "VALUES ('" + nombre + "', '" + marca + "','" +color+ "','" + talla + "'," + precio + ",'" + url + "'," + categoria + ")";
 
@@ -154,13 +156,13 @@ public class Conexion {
 //		preparedStmt.setString(5, "categoria");
 //		preparedStmt.setDouble(6, precio);
 //		preparedStmt.setString(7, "url");
-		System.out.println(query);
+		log.info(query);
 		int rs = s.executeUpdate(query);
 		desconectar();
 	}
 
 	public ArrayList<String> listarNombres() throws SQLException{
-		System.out.println("principio conexion.conexion listarNombres");
+		log.info("principio conexion.conexion listarNombres");
 		ArrayList<String> lista = new ArrayList<String>();
 		conectar();
 		Statement  s = conexion.createStatement();
@@ -172,7 +174,7 @@ public class Conexion {
 			lista.add(nombre);
 
 		}
-		System.out.println("fin conexion.conexion listarNombres");
+		log.info("fin conexion.conexion listarNombres");
 		desconectar();
 		return lista;	
 	} 
