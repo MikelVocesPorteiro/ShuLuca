@@ -24,7 +24,7 @@ import servicios.Servicios;
 /**
  * Servlet implementation class Zapateria
  */
-@WebServlet("/Zapateria")
+@WebServlet("/zapateria")
 public class Zapateria extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private IServicios servicios = new Servicios();
