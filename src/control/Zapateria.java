@@ -10,6 +10,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.logging.log4j.LogManager;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+
 import domain.Categoria;
 import domain.Zapato;
 import servicios.IServicios;
@@ -22,7 +28,9 @@ import servicios.Servicios;
 public class Zapateria extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private IServicios servicios = new Servicios();
-
+	
+	private static final Logger logger = LogManager.getLogger("Zapateria");
+	
 	/**
 	 * Default constructor.
 	 */
@@ -38,56 +46,55 @@ public class Zapateria extends HttpServlet {
 			throws ServletException, IOException {
 		
 		String origen = request.getParameter("page");
-		System.out.println( " control.zapateria /Zapateria principio processRequest con origen = " + origen );
-		System.out.println("comienzo if");
+		logger.info( " control.zapateria /Zapateria principio processRequest con origen = " + origen );
 		
 		if (origen.equals("listado")) {
-			System.out.println("  control.zapateria /Zapateria  processRequest principio if listado ");
+			logger.info("  control.zapateria /Zapateria  processRequest principio if listado ");
 			goListado(request, response);
-			System.out.println("  control.zapateria /Zapateria  processRequest fin if listado ");
+			logger.info("  control.zapateria /Zapateria  processRequest fin if listado ");
 
 		}
 		/**
 		 * 
 		 */
 		if (origen.equals("form-insertar")) {
-			System.out.println("  control.zapateria /Zapateria  processRequest principio if form-inserta ");
+			logger.info("  control.zapateria /Zapateria  processRequest principio if form-inserta ");
 			goListCategoria(request, response);
-			System.out.println("  control.zapateria /Zapateria  processRequest fin if form-inserta ");
+			logger.info("  control.zapateria /Zapateria  processRequest fin if form-inserta ");
 		}
 		if (origen.equals("insertar")) {
-			System.out.println("  control.zapateria /Zapateria  processRequest principio if insertar ");
+			logger.info("  control.zapateria /Zapateria  processRequest principio if insertar ");
 			goAnadirZapato(request, response);
-			System.out.println("  control.zapateria /Zapateria  processRequest fin if insertar ");
+			logger.info("  control.zapateria /Zapateria  processRequest fin if insertar ");
 		}
 		
 		if (origen.equals("modificar")) {
-			System.out.println("  control.zapateria /Zapateria  processRequest principio if modificar ");
+			logger.info("  control.zapateria /Zapateria  processRequest principio if modificar ");
 			goFormularioModificar(request, response);
-			System.out.println("  control.zapateria /Zapateria  processRequest fin if modificar ");
+			logger.info("  control.zapateria /Zapateria  processRequest fin if modificar ");
 		}
-		
+		/*
 		if (origen.equals("es una cascara")) {
-			System.out.println("  control.zapateria /Zapateria  processRequest principio if es una cascara ");
+			logger.info("  control.zapateria /Zapateria  processRequest principio if es una cascara ");
 			
 			
 			
-			System.out.println("  control.zapateria /Zapateria  processRequest fin if es una cascara ");
+			logger.info("  control.zapateria /Zapateria  processRequest fin if es una cascara ");
 
-		}
-		System.out.println( "  control.zapateria /Zapateria fin processRequest" );
+		}*/
+		logger.info( "  control.zapateria /Zapateria fin processRequest" );
 	}
 	
 	protected void goListado(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		System.out.println("  control.zapateria /Zapateria principio golistado ");
+		logger.info("  control.zapateria /Zapateria principio golistado ");
 		
 		ArrayList<Zapato> listaZapatos = servicios.listarZapatos();
 		request.setAttribute("zapatos", listaZapatos);
 		RequestDispatcher view = request.getRequestDispatcher("/listado.jsp");
 		view.forward(request, response);
 		
-		System.out.println("  control.zapateria /Zapateria fin golistado ");
+		logger.info("  control.zapateria /Zapateria fin golistado ");
 	}
 	/**
 	 * 
@@ -98,14 +105,14 @@ public class Zapateria extends HttpServlet {
 	 */
 	protected void goListCategoria(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		System.out.println("  control.zapateria /Zapateria principio goListCategoria ");
+		logger.info("  control.zapateria /Zapateria principio goListCategoria ");
 		
 		ArrayList<Categoria> listaCategorias = servicios.listarCategorias();
 		request.setAttribute("categorias", listaCategorias);
 		RequestDispatcher view = request.getRequestDispatcher("/formanh.jsp");
 		view.forward(request, response);
 		
-		System.out.println("  control.zapateria /Zapateria fin goListCategoria ");
+		logger.info("  control.zapateria /Zapateria fin goListCategoria ");
 	}
 	/**
 	 * Me devuelve la lista de categorias en un arraylist de strings
@@ -117,9 +124,9 @@ public class Zapateria extends HttpServlet {
 	 */
 	protected ArrayList<Categoria> getListCategoria(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		System.out.println("  control.zapateria /Zapateria principio goListCategoria ");
+		logger.info("  control.zapateria /Zapateria principio goListCategoria ");
 		ArrayList<Categoria> listaCategorias = servicios.listarCategorias();
-		System.out.println("  control.zapateria /Zapateria fin goListCategoria ");
+		logger.info("  control.zapateria /Zapateria fin goListCategoria ");
 		return listaCategorias;
 	}
 	/**
@@ -132,9 +139,9 @@ public class Zapateria extends HttpServlet {
 	 */
 	protected ArrayList<String> getListNombres(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		System.out.println("  control.zapateria /Zapateria principio goListNombres ");
+		logger.info("  control.zapateria /Zapateria principio goListNombres ");
 		ArrayList<String> listaNombres = servicios.listarNombres();
-		System.out.println("  control.zapateria /Zapateria fin goListNombres ");
+		logger.info("  control.zapateria /Zapateria fin goListNombres ");
 		return listaNombres;
 	}
 	/**
@@ -146,7 +153,7 @@ public class Zapateria extends HttpServlet {
 	 */
 	protected void goAnadirZapato(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		System.out.println("  control.zapateria /Zapateria principio goAnadirZapato ");
+		logger.info("  control.zapateria /Zapateria principio goAnadirZapato ");
 		
 		String nombre = request.getParameter("nombre");
 		String marca = request.getParameter("marca");
@@ -154,28 +161,21 @@ public class Zapateria extends HttpServlet {
 		String talla = request.getParameter("talla");
 		int categoria =Integer.parseInt(request.getParameter("categoria"));
 		double precio =Double.parseDouble(request.getParameter("precio"));
-//		String precio = request.getParameter("precio");
 	
 		String url = request.getParameter("url");
-
-		System.out.println("la url : " + url );
-		System.out.println("Categoria: "+ categoria);
-
-		
 		
 		servicios.anadirZapato(nombre, marca, color, talla, categoria, precio, url);
+		
 		goListado(request, response);
 		
-		System.out.println("  control.zapateria /Zapateria fin goAnadirZapato ");
+		logger.info("  control.zapateria /Zapateria fin goAnadirZapato ");
 	}
 	
 	protected void goFormularioModificar(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		System.out.println("  control.zapateria /Zapateria principio goFormularioModificar ");
+		logger.info("  control.zapateria /Zapateria principio goFormularioModificar ");
 		ArrayList<String> listaNombres = getListNombres(request, response);
 		ArrayList<Categoria> listaCategorias = getListCategoria(request, response);
-		System.out.println("Lista nombres: " + listaNombres);
-		System.out.println("Lista categorias: " + listaCategorias);
 		
 		request.setAttribute("nombres", listaNombres);
 		request.setAttribute("categorias", listaCategorias);
@@ -183,29 +183,15 @@ public class Zapateria extends HttpServlet {
 		RequestDispatcher view = request.getRequestDispatcher("/modificar.jsp");
 		view.forward(request, response);
 		
-		System.out.println("  control.zapateria /Zapateria fin goFormularioModificar ");
-		
-		
+		logger.info("  control.zapateria /Zapateria fin goFormularioModificar ");
 		
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		System.out.println("  control.zapateria /Zapateria principio doget ");
+		logger.info("  control.zapateria /Zapateria principio doget ");
 		processRequest(request, response);
-		System.out.println("  control.zapateria /Zapateria fin doget ");
+		logger.info("  control.zapateria /Zapateria fin doget ");
 	}
 
 	/**
@@ -214,9 +200,9 @@ public class Zapateria extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		System.out.println("  control.zapateria /Zapateria principio doPost ");
+		logger.info("  control.zapateria /Zapateria principio doPost ");
 		doGet(request, response);
-		System.out.println("  control.zapateria /Zapateria fin dopost ");
+		logger.info("  control.zapateria /Zapateria fin dopost ");
 	}
 
 }
