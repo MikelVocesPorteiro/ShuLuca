@@ -46,7 +46,6 @@ public class Zapateria extends HttpServlet {
 			throws ServletException, IOException {
 		
 		String origen = request.getParameter("page");
-		//logger
 		logger.info( " control.zapateria /Zapateria principio processRequest con origen = " + origen );
 		
 		if (origen.equals("listado")) {
@@ -55,9 +54,7 @@ public class Zapateria extends HttpServlet {
 			logger.info("  control.zapateria /Zapateria  processRequest fin if listado ");
 
 		}
-		/**
-		 * 
-		 */
+
 		if (origen.equals("form-insertar")) {
 			logger.info("  control.zapateria /Zapateria  processRequest principio if form-inserta ");
 			goListCategoria(request, response);

@@ -13,6 +13,7 @@ public class LeerTeclado {
 		System.out.println(msg);
 		return LeerInt();
 	}
+	
 	@SuppressWarnings("resource")
 	public static String LeerTexto(){
 		return new Scanner(System.in).nextLine();

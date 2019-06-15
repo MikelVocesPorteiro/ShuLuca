@@ -11,6 +11,7 @@ public class Zapato {
 	/**
 	 * Nombre del zapato
 	 */
+	
 	private String nombre;
 	/**
 	 * Marca del zapato

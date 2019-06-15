@@ -24,6 +24,7 @@ public class LeerDatos  {
 		String str ;
 		int numero=0;
 		System.out.println(msg);
+		
 		try{
 			almEnteros = new BufferedReader(new InputStreamReader(System.in));
 			str = almEnteros.readLine();

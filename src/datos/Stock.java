@@ -28,6 +28,7 @@ public class Stock implements IStock{
 		super();
 		this.stock = stock;
 	}
+	
 	 public Stock(){
 		 
 	 }

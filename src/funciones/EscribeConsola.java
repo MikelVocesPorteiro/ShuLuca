@@ -7,5 +7,6 @@ public class EscribeConsola {
 	
 	public static void escribirNumero(int num){
 		System.out.println("El lado mas largo es " +num);
+		
 	}
 }

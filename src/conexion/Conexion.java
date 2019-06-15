@@ -20,7 +20,7 @@ import org.apache.logging.log4j.Logger;
 import domain.Categoria;
 import domain.Zapato;
 
-//////////NUEVO//////////
+
 /**
  * @author admin
  *
